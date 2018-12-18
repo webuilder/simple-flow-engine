@@ -13,8 +13,8 @@ import webuilder.flow.FlowLink;
 import webuilder.flow.FlowNode;
 import webuilder.flow.FlowRuntimeException;
 import webuilder.flow.FlowUser;
-import webuilder.flow.db.bridge.DBFlowHistoryMapper;
-import webuilder.flow.db.bridge.DBFlowInstanceMapper;
+import webuilder.flow.db.bridge.DBFlowHistoryService;
+import webuilder.flow.db.bridge.DBFlowInstanceService;
 import webuilder.flow.db.domain.DBFlowHistory;
 import webuilder.flow.db.domain.DBFlowInstance;
 import webuilder.flow.impl.AbstractFlowEngine;
@@ -22,12 +22,12 @@ import webuilder.flow.utils.FlowUtils;
 
 public class DBFlowEngine extends AbstractFlowEngine implements FlowEngine {
 
-	private final DBFlowInstanceMapper instanceMapper;
+	private final DBFlowInstanceService instanceMapper;
 
-	private final DBFlowHistoryMapper historyMapper;
+	private final DBFlowHistoryService historyMapper;
 
-	public DBFlowEngine(Collection<FlowDefinition> flows, DBFlowInstanceMapper instanceMapper,
-			DBFlowHistoryMapper historyMapper) {
+	public DBFlowEngine(Collection<FlowDefinition> flows, DBFlowInstanceService instanceMapper,
+			DBFlowHistoryService historyMapper) {
 		super(flows);
 		this.instanceMapper = instanceMapper;
 		this.historyMapper = historyMapper;

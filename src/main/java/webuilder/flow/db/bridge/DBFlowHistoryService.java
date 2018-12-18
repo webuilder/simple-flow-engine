@@ -4,7 +4,7 @@ import java.util.List;
 
 import webuilder.flow.db.domain.DBFlowHistory;
 
-public interface DBFlowHistoryMapper {
+public interface DBFlowHistoryService {
 	/**
 	 * 记录流程的历史步骤
 	 * 

@@ -2,7 +2,7 @@ package webuilder.flow.db.bridge;
 
 import webuilder.flow.db.domain.DBFlowInstance;
 
-public interface DBFlowInstanceMapper {
+public interface DBFlowInstanceService {
 	/**
 	 * 读取一个流程实例
 	 * 
