@@ -1,10 +1,11 @@
 package webuilder.flow.impl;
 
+import webuilder.flow.AbstractFlowLink;
 import webuilder.flow.Condition;
 import webuilder.flow.FlowLink;
 import webuilder.flow.FlowNode;
 
-public class DefaultFlowLink implements FlowLink {
+public class DefaultFlowLink extends AbstractFlowLink implements FlowLink {
 
 	private final String linkId;
 

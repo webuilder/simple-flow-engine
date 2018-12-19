@@ -27,6 +27,12 @@ public class SimpleFlowBuilderTest {
 				DefaultFlowDefinition def = new DefaultFlowDefinition(FLOW_NAME);
 
 				StartNode start = new StartNode();
+				start.addFunction(new NodeFunction(){
+
+					@Override
+					public void run(FlowInstance flowInstance, FlowContext context) {
+						System.out.println("Exec Start Node");
+					}});
 				def.addNode(start);
 
 				TaskNode apply = new TaskNode("a01", "申请休假", false);

@@ -22,15 +22,15 @@ import webuilder.flow.utils.FlowUtils;
 
 public class DBFlowEngine extends AbstractFlowEngine implements FlowEngine {
 
-	private final DBFlowInstanceService instanceMapper;
+	private final DBFlowInstanceService instanceService;
 
-	private final DBFlowHistoryService historyMapper;
+	private final DBFlowHistoryService historyService;
 
-	public DBFlowEngine(Collection<FlowDefinition> flows, DBFlowInstanceService instanceMapper,
-			DBFlowHistoryService historyMapper) {
+	public DBFlowEngine(Collection<FlowDefinition> flows, DBFlowInstanceService instanceService,
+			DBFlowHistoryService historyService) {
 		super(flows);
-		this.instanceMapper = instanceMapper;
-		this.historyMapper = historyMapper;
+		this.instanceService = instanceService;
+		this.historyService = historyService;
 	}
 
 	@Override
@@ -53,7 +53,7 @@ public class DBFlowEngine extends AbstractFlowEngine implements FlowEngine {
 		instance.setStep(1);
 		instance.setUpdateTime(Instant.now());
 
-		instanceMapper.create(instance);
+		instanceService.create(instance);
 
 		saveHistory(instance);
 
@@ -63,7 +63,7 @@ public class DBFlowEngine extends AbstractFlowEngine implements FlowEngine {
 
 	@Override
 	public FlowInstance getInstance(Long instanceId) {
-		DBFlowInstance instance = instanceMapper.get(instanceId);
+		DBFlowInstance instance = instanceService.get(instanceId);
 		return instance;
 	}
 
@@ -90,14 +90,14 @@ public class DBFlowEngine extends AbstractFlowEngine implements FlowEngine {
 			dbInstance.setOperator(nextUser.getUserId());
 			dbInstance.setOperatorName(nextUser.getName());
 		}
-		instanceMapper.update(dbInstance);
-		dbInstance = instanceMapper.get(instance.getInstanceId());
+		instanceService.update(dbInstance);
+		dbInstance = instanceService.get(instance.getInstanceId());
 
 		saveHistory(dbInstance);
 	}
 
 	private void saveHistory(DBFlowInstance dbInstance) {
-		historyMapper.historyDone(dbInstance.getInstanceId());
+		historyService.historyDone(dbInstance.getInstanceId());
 
 		DBFlowHistory his = new DBFlowHistory();
 		his.setInstanceId(dbInstance.getInstanceId());
@@ -108,7 +108,7 @@ public class DBFlowEngine extends AbstractFlowEngine implements FlowEngine {
 		his.setOperatorName(dbInstance.getOperatorName());
 		his.setStep(dbInstance.getStep());
 		his.setUpdateTime(Instant.now());
-		historyMapper.create(his);
+		historyService.create(his);
 	}
 
 }

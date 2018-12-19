@@ -76,6 +76,7 @@ public abstract class AbstractFlowEngine implements FlowEngine {
 		}
 
 		if (!(node instanceof EndNode)) {
+			nextLink.run(instance, context);
 			saveInstance(node, linkId, instance, context);
 			String next = nextLink.getToNode();
 

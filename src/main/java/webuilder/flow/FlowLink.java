@@ -1,6 +1,5 @@
 package webuilder.flow;
 
-
 public interface FlowLink {
 
 	String getLinkId();
@@ -13,17 +12,8 @@ public interface FlowLink {
 
 	Condition getCondition();
 
-//	/**
-//	 * 获取用于查找经办人的UserFinder
-//	 * 
-//	 * @return
-//	 */
-//	UserFinder getOperatorFinder();
-//
-//	/**
-//	 * 获取用于通知用户的UserFinder
-//	 * 
-//	 * @return
-//	 */
-//	UserFinder getNotifyUserFinder();
+	Object getAttribute(String attributeName);
+
+	void run(FlowInstance flowInstance, FlowContext context);
+
 }
