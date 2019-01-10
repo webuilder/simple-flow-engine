@@ -48,14 +48,12 @@ public class DBFlowEngine extends AbstractFlowEngine implements FlowEngine {
 		instance.setCurrentNode(startNode);
 		instance.setCurrentNodeName(node.getNodeName());
 
-		instance.setOperator(context.getUser().getUserId());
-		instance.setOperatorName(context.getUser().getName());
 		instance.setStep(1);
 		instance.setUpdateTime(Instant.now());
 
 		instanceService.create(instance);
 
-		saveHistory(instance);
+		saveHistory(instance, context);
 
 		runStartNode(instance, context);
 		return instance;
@@ -79,35 +77,27 @@ public class DBFlowEngine extends AbstractFlowEngine implements FlowEngine {
 		DBFlowInstance dbInstance = (DBFlowInstance) instance;
 		dbInstance.setCurrentNode(nextNodeId);
 		dbInstance.setCurrentNodeName(nextNode.getNodeName());
-		if (nextNode instanceof EndNode) {
-			dbInstance.setOperator("");
-			dbInstance.setOperatorName("");
-		} else {
-			FlowUser nextUser = context.getNextUser();
-			if (nextUser == null) {
-				throw new FlowRuntimeException("下一节点经办人设置错误");
-			}
-			dbInstance.setOperator(nextUser.getUserId());
-			dbInstance.setOperatorName(nextUser.getName());
-		}
+		
 		instanceService.update(dbInstance);
 		dbInstance = instanceService.get(instance.getInstanceId());
 
-		saveHistory(dbInstance);
+		saveHistory(dbInstance, context);
 	}
 
-	private void saveHistory(DBFlowInstance dbInstance) {
-		historyService.historyDone(dbInstance.getInstanceId());
+	private void saveHistory(DBFlowInstance dbInstance, FlowContext context) {
+		historyService.historyDone(dbInstance.getInstanceId(), context);
 
 		DBFlowHistory his = new DBFlowHistory();
 		his.setInstanceId(dbInstance.getInstanceId());
 		his.setFlowName(dbInstance.getFlowName());
 		his.setNodeId(dbInstance.getCurrentNode());
 		his.setNodeName(dbInstance.getCurrentNodeName());
-		his.setOperatorId(dbInstance.getOperator());
-		his.setOperatorName(dbInstance.getOperatorName());
+
 		his.setStep(dbInstance.getStep());
 		his.setUpdateTime(Instant.now());
+		
+		//his.setOperatorId(context.getUser().getUserId());
+		//his.setOperatorName(context.getUser().getName());
 		historyService.create(his);
 	}
 

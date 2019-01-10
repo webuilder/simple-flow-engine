@@ -38,17 +38,4 @@ public class MemFlowInstance implements FlowInstance {
 	public void setCurrentNode(String currentNode) {
 		this.currentNode = currentNode;
 	}
-
-	@Override
-	public String getOperator() {
-		// TODO Auto-generated method stub
-		throw new RuntimeException("not implement.");
-	}
-
-	@Override
-	public String getOperatorName() {
-		// TODO Auto-generated method stub
-		return "Not set Operator Name";
-	}
-
 }

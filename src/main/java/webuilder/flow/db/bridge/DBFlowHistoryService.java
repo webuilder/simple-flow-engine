@@ -2,6 +2,7 @@ package webuilder.flow.db.bridge;
 
 import java.util.List;
 
+import webuilder.flow.FlowContext;
 import webuilder.flow.db.domain.DBFlowHistory;
 
 public interface DBFlowHistoryService {
@@ -33,8 +34,9 @@ public interface DBFlowHistoryService {
 	 * 将当前流程的历史步骤标记为已完成
 	 * 
 	 * @param instanceId
+	 * @param context TODO
 	 */
-	void historyDone(Long instanceId);
+	void historyDone(Long instanceId, FlowContext context);
 
 	/**
 	 * 查询指定流程实例的历史步骤

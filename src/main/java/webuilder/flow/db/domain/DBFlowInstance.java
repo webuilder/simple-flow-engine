@@ -24,11 +24,6 @@ public class DBFlowInstance implements FlowInstance {
 
 	private String currentNodeName;
 
-	/** 经办人ID */
-	private String operator;
-	/** 经办人姓名 */
-	private String operatorName;
-
 	/**
 	 * 当前的步数
 	 */
@@ -38,6 +33,4 @@ public class DBFlowInstance implements FlowInstance {
 	 * 最后更新时间
 	 */
 	private Instant updateTime;
-
-	private int active;
 }

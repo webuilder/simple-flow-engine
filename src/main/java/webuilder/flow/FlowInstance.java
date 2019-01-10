@@ -31,9 +31,5 @@ public interface FlowInstance {
 	String getCurrentNode();
 
 	void setCurrentNode(String currentNode);
-	
-	/** 获取此流程实例的当前经办人ID */
-	String getOperator();
-	/** 获取此流程实例的当前经办人姓名 */
-	String getOperatorName();
+
 }

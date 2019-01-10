@@ -39,6 +39,7 @@ public abstract class AbstractFlowEngine implements FlowEngine {
 			if (FlowUtils.isEmptyString(linkId)) {
 				if (validLinks.size() == 1) {
 					nextLink = validLinks.get(0);
+					linkId = nextLink.getLinkId();
 				} else {
 					throw new FlowRuntimeException(
 							"FlowInstance[" + instance.getInstanceId() + "] node[" + nodeId + "] 未指定linkId");

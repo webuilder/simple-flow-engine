@@ -23,5 +23,5 @@ public class DBFlowHistory {
 	private Instant updateTime;
 	private String datas;
 	/** 当前步骤是否为在办 */
-	private boolean doing;
+	private boolean active;
 }
