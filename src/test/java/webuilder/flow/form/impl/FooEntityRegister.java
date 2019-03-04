@@ -4,9 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-import webuilder.flow.FlowForm;
+import webuilder.flow.Form;
 import webuilder.flow.FlowFormItem;
-import webuilder.flow.form.DefaultFlowForm;
+import webuilder.flow.form.DefaultForm;
 import webuilder.flow.form.FlowFormRegister;
 import webuilder.flow.form.ReadonlyItem;
 import webuilder.flow.form.SelectItem;
@@ -15,10 +15,10 @@ import webuilder.flow.form.TextareaItem;
 
 public class FooEntityRegister implements FlowFormRegister<FooEntity> {
 
-	private FlowForm form;
+	private Form form;
 
 	public FooEntityRegister() {
-		DefaultFlowForm form = new DefaultFlowForm();
+		DefaultForm form = new DefaultForm();
 		form.setFlowName("FOO-FLOW");
 
 		List<FlowFormItem> items = new ArrayList<>();
@@ -51,7 +51,7 @@ public class FooEntityRegister implements FlowFormRegister<FooEntity> {
 	}
 
 	@Override
-	public FlowForm getForm() {
+	public Form getForm() {
 
 		return form;
 	}

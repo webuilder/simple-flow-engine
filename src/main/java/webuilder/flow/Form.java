@@ -3,14 +3,12 @@ package webuilder.flow;
 import java.util.List;
 
 /**
- * 流程表单
+ * 通用表单
  * 
  * @author lijian
  *
  */
-public interface FlowForm {
-
-	String getFlowName();
+public interface Form {
 
 	List<FlowFormItem> getItems();
 }

@@ -5,6 +5,12 @@ import lombok.EqualsAndHashCode;
 import lombok.ToString;
 import webuilder.flow.FlowFormItem;
 
+/**
+ * 文本框
+ * 
+ * @author lijian
+ *
+ */
 @Data
 @EqualsAndHashCode(callSuper = true)
 @ToString(callSuper = true)

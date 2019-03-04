@@ -16,7 +16,7 @@ public class TaskNode extends AbstractTaskNode implements FlowNode {
 
 	private final boolean auto;
 
-	private FlowForm form = FlowUtils.EMPTY_FORM;
+	private Form form = FlowUtils.EMPTY_FORM;
 
 	public TaskNode(String nodeId, String nodeName, boolean auto) {
 		super();
@@ -41,11 +41,11 @@ public class TaskNode extends AbstractTaskNode implements FlowNode {
 	}
 
 	@Override
-	public FlowForm getForm() {
+	public Form getForm() {
 		return form;
 	}
 
-	public void setForm(FlowForm form) {
+	public void setForm(Form form) {
 		this.form = form;
 	}
 

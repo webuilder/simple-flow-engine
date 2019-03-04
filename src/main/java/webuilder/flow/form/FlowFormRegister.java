@@ -2,7 +2,7 @@ package webuilder.flow.form;
 
 import java.util.Map;
 
-import webuilder.flow.FlowForm;
+import webuilder.flow.Form;
 
 /**
  * 向系统注册流程表单
@@ -16,7 +16,7 @@ public interface FlowFormRegister<T> {
 
 	String getFlowName();
 
-	FlowForm getForm();
+	Form getForm();
 
 	Map<String, String> loadValue(T entity);
 

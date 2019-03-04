@@ -21,7 +21,7 @@ public class StartNode extends AbstractTaskNode implements FlowNode {
 	}
 
 	@Override
-	public FlowForm getForm() {
+	public Form getForm() {
 		// TODO Auto-generated method stub
 		return null;
 	}

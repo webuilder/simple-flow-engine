@@ -6,7 +6,7 @@ import lombok.ToString;
 import webuilder.flow.FlowFormItem;
 
 /**
- * 文本域
+ * 日期选择框
  * 
  * @author lijian
  *
@@ -14,24 +14,20 @@ import webuilder.flow.FlowFormItem;
 @Data
 @EqualsAndHashCode(callSuper = true)
 @ToString(callSuper = true)
-public class TextareaItem extends AbstractItem implements FlowFormItem {
-
-	private String placeholder;
-
-	private int maxLength;
+public class DateItem extends AbstractItem implements FlowFormItem {
 
 	@Override
 	public String getType() {
 		// TODO Auto-generated method stub
-		return "textarea";
+		return "date";
 	}
 
-	public TextareaItem() {
+	public DateItem() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public TextareaItem(String name, String text) {
+	public DateItem(String name, String text) {
 		super(name, text);
 		// TODO Auto-generated constructor stub
 	}
