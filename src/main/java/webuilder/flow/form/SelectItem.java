@@ -24,4 +24,9 @@ public class SelectItem extends HaveChildrenItem implements FormItem {
 		// TODO Auto-generated constructor stub
 	}
 
+	public SelectItem(String name, String text) {
+		super(name, text);
+		// TODO Auto-generated constructor stub
+	}
+
 }
