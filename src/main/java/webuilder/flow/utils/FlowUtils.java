@@ -3,9 +3,8 @@ package webuilder.flow.utils;
 import java.util.Collections;
 import java.util.List;
 
+import webuilder.flow.FormItem;
 import webuilder.flow.Form;
-import webuilder.flow.FlowFormItem;
-import webuilder.flow.FlowRuntimeException;
 
 public abstract class FlowUtils {
 
@@ -13,12 +12,15 @@ public abstract class FlowUtils {
 		return s == null || "".equals(s);
 	}
 
-	public static final Form EMPTY_FORM = new EmptyFlowForm();
+	/**
+	 * 一个空白的Form，不包含任何表单项
+	 */
+	public static final Form EMPTY_FORM = new EmptyForm();
 
-	private static final class EmptyFlowForm implements Form {
+	private static final class EmptyForm implements Form {
 
 		@Override
-		public List<FlowFormItem> getItems() {
+		public List<FormItem> getItems() {
 			// TODO Auto-generated method stub
 			return Collections.emptyList();
 		}

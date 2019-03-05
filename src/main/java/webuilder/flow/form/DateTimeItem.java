@@ -3,7 +3,7 @@ package webuilder.flow.form;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
-import webuilder.flow.FlowFormItem;
+import webuilder.flow.FormItem;
 
 /**
  * 日期与时间选择框
@@ -14,7 +14,7 @@ import webuilder.flow.FlowFormItem;
 @Data
 @EqualsAndHashCode(callSuper = true)
 @ToString(callSuper = true)
-public class DateTimeItem extends AbstractItem implements FlowFormItem {
+public class DateTimeItem extends AbstractItem implements FormItem {
 
 	@Override
 	public String getType() {

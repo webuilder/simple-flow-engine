@@ -10,5 +10,5 @@ import java.util.List;
  */
 public interface Form {
 
-	List<FlowFormItem> getItems();
+	List<FormItem> getItems();
 }

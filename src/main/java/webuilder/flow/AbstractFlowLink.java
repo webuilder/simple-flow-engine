@@ -26,8 +26,8 @@ public abstract class AbstractFlowLink implements FlowLink {
 	public Object getAttribute(String attributeName) {
 		return attributes.get(attributeName);
 	}
-	
-	public void setAttribute(String attributeName, Object value){
+
+	public void setAttribute(String attributeName, Object value) {
 		attributes.put(attributeName, value);
 	}
 

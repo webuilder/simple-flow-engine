@@ -37,6 +37,6 @@ public interface FlowNode {
 	boolean isAuto();
 
 	Form getForm();
-	
+
 	Object getAttribute(String attributeName);
 }

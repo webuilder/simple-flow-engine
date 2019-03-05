@@ -6,12 +6,12 @@ import java.util.List;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
-import webuilder.flow.FlowFormItem;
+import webuilder.flow.FormItem;
 
 @Data
 @EqualsAndHashCode(callSuper = true)
 @ToString(callSuper = true)
-public class SelectItem extends AbstractItem implements FlowFormItem {
+public class SelectItem extends AbstractItem implements FormItem {
 
 	private List<Option> items = new ArrayList<>();
 

@@ -5,7 +5,7 @@ import java.math.BigDecimal;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
-import webuilder.flow.FlowFormItem;
+import webuilder.flow.FormItem;
 
 /**
  * 文本框，仅能输入数字
@@ -16,7 +16,7 @@ import webuilder.flow.FlowFormItem;
 @Data
 @EqualsAndHashCode(callSuper = true)
 @ToString(callSuper = true)
-public class NumberItem extends AbstractItem implements FlowFormItem {
+public class NumberItem extends AbstractItem implements FormItem {
 
 	private String placeholder;
 

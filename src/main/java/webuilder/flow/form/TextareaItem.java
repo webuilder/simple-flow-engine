@@ -3,7 +3,7 @@ package webuilder.flow.form;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
-import webuilder.flow.FlowFormItem;
+import webuilder.flow.FormItem;
 
 /**
  * 文本域
@@ -14,7 +14,7 @@ import webuilder.flow.FlowFormItem;
 @Data
 @EqualsAndHashCode(callSuper = true)
 @ToString(callSuper = true)
-public class TextareaItem extends AbstractItem implements FlowFormItem {
+public class TextareaItem extends AbstractItem implements FormItem {
 
 	private String placeholder;
 

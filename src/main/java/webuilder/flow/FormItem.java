@@ -1,12 +1,12 @@
 package webuilder.flow;
 
 /**
- * 流程表单项
+ * 表单项
  * 
  * @author lijian
  *
  */
-public interface FlowFormItem {
+public interface FormItem {
 	/** 字段名 */
 	String getName();
 

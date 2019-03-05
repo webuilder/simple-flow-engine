@@ -74,7 +74,7 @@ public class DBFlowEngine extends AbstractFlowEngine implements FlowEngine {
 		DBFlowInstance dbInstance = (DBFlowInstance) instance;
 		dbInstance.setCurrentNode(nextNodeId);
 		dbInstance.setCurrentNodeName(nextNode.getNodeName());
-		
+
 		instanceService.update(dbInstance);
 		dbInstance = instanceService.get(instance.getInstanceId());
 
@@ -93,9 +93,9 @@ public class DBFlowEngine extends AbstractFlowEngine implements FlowEngine {
 		his.setStep(dbInstance.getStep());
 		his.setUpdateTime(Instant.now());
 		his.setActive(true);
-		
-		//his.setOperatorId(context.getUser().getUserId());
-		//his.setOperatorName(context.getUser().getName());
+
+		// his.setOperatorId(context.getUser().getUserId());
+		// his.setOperatorName(context.getUser().getName());
 		historyService.create(his);
 	}
 

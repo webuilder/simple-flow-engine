@@ -12,7 +12,7 @@ public interface FlowDefinition {
 	String getStartNode();
 
 	List<FlowLink> getLinks();
-	
+
 	FlowLink getLink(String linkId);
 
 	List<NodeListener> getNodeListeners();

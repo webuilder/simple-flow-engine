@@ -37,7 +37,7 @@ public class MemFlowEngine extends AbstractFlowEngine implements FlowEngine {
 
 		flow.getNodes().get(startNodeName);
 		instances.put(instanceId, instance);
-		
+
 		runStartNode(instance, context);
 		return instance;
 	}

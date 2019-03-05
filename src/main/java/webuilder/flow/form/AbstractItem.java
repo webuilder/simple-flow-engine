@@ -1,10 +1,10 @@
 package webuilder.flow.form;
 
 import lombok.Data;
-import webuilder.flow.FlowFormItem;
+import webuilder.flow.FormItem;
 
 @Data
-public abstract class AbstractItem implements FlowFormItem {
+public abstract class AbstractItem implements FormItem {
 
 	private String name;
 

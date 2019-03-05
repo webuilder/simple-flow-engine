@@ -6,7 +6,7 @@ import java.util.Collections;
 import java.util.List;
 
 import webuilder.flow.Form;
-import webuilder.flow.FlowFormItem;
+import webuilder.flow.FormItem;
 
 /**
  * 受权限控制的表单
@@ -34,9 +34,9 @@ public class PermissionedForm implements Form {
 	}
 
 	@Override
-	public List<FlowFormItem> getItems() {
-		List<FlowFormItem> result = new ArrayList<>();
-		for (FlowFormItem item : form.getItems()) {
+	public List<FormItem> getItems() {
+		List<FormItem> result = new ArrayList<>();
+		for (FormItem item : form.getItems()) {
 			if (editableFields.contains(item.getName())) {
 				result.add(item);
 			} else if (readonlyFields.contains(item.getName())) {

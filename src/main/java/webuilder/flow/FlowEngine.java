@@ -20,9 +20,10 @@ public interface FlowEngine {
 	 * @return
 	 */
 	FlowInstance startFlow(String flowName, FlowContext context);
-	
+
 	/**
 	 * 读取一个流程实例
+	 * 
 	 * @param instanceId
 	 * @return
 	 */
@@ -42,7 +43,8 @@ public interface FlowEngine {
 	 * 
 	 * @param instance
 	 * @param context
-	 * @param linkId 指定下一步使用的Link; 可以为null，那么由引擎自行选择合适的Link
+	 * @param linkId
+	 *            指定下一步使用的Link; 可以为null，那么由引擎自行选择合适的Link
 	 */
 	void run(FlowInstance instance, FlowContext context, String linkId);
 
