@@ -23,7 +23,7 @@ public class TextItem extends AbstractItem implements FormItem {
 	@Override
 	public String getType() {
 		// TODO Auto-generated method stub
-		return "text";
+		return FormItemType.TEXT;
 	}
 
 	public TextItem() {

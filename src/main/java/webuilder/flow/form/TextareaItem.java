@@ -23,7 +23,7 @@ public class TextareaItem extends AbstractItem implements FormItem {
 	@Override
 	public String getType() {
 		// TODO Auto-generated method stub
-		return "textarea";
+		return FormItemType.TEXTAREA;
 	}
 
 	public TextareaItem() {

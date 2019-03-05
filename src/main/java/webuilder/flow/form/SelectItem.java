@@ -11,14 +11,12 @@ import webuilder.flow.FormItem;
 @Data
 @EqualsAndHashCode(callSuper = true)
 @ToString(callSuper = true)
-public class SelectItem extends AbstractItem implements FormItem {
-
-	private List<Option> items = new ArrayList<>();
+public class SelectItem extends HaveChildrenItem implements FormItem {
 
 	@Override
 	public String getType() {
 		// TODO Auto-generated method stub
-		return "select";
+		return FormItemType.SELECT;
 	}
 
 	public SelectItem() {
@@ -26,21 +24,4 @@ public class SelectItem extends AbstractItem implements FormItem {
 		// TODO Auto-generated constructor stub
 	}
 
-	public SelectItem(String name, String text) {
-		super(name, text);
-		// TODO Auto-generated constructor stub
-	}
-
-	public void addItem(String value, String text) {
-		Option option = new Option();
-		option.setValue(value);
-		option.setText(text);
-		items.add(option);
-	}
-
-	@Data
-	public static class Option {
-		private String value;
-		private String text;
-	}
 }

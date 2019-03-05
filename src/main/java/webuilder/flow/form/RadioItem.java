@@ -5,31 +5,24 @@ import lombok.EqualsAndHashCode;
 import lombok.ToString;
 import webuilder.flow.FormItem;
 
-/**
- * 日期与时间选择框
- * 
- * @author lijian
- *
- */
 @Data
 @EqualsAndHashCode(callSuper = true)
 @ToString(callSuper = true)
-public class DateTimeItem extends AbstractItem implements FormItem {
+public class RadioItem extends HaveChildrenItem implements FormItem {
 
 	@Override
 	public String getType() {
 		// TODO Auto-generated method stub
-		return FormItemType.DATETIME;
+		return FormItemType.RADIO;
 	}
 
-	public DateTimeItem() {
+	public RadioItem() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public DateTimeItem(String name, String text) {
+	public RadioItem(String name, String text) {
 		super(name, text);
 		// TODO Auto-generated constructor stub
 	}
-
 }
