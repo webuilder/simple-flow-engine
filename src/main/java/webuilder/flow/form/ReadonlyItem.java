@@ -3,6 +3,7 @@ package webuilder.flow.form;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
+import webuilder.flow.FormItem;
 
 /**
  * 只读字段，仅用于显示
@@ -29,6 +30,21 @@ public class ReadonlyItem extends AbstractItem {
 	public String getType() {
 		// TODO Auto-generated method stub
 		return FormItemType.READONLY;
+	}
+
+	@Override
+	public final boolean isReadonly() {
+		return true;
+	}
+
+	@Override
+	public FormItem clone() throws CloneNotSupportedException {
+		return this;
+	}
+
+	@Override
+	public FormItem createReadonlyItem() throws CloneNotSupportedException {
+		return this;
 	}
 
 }

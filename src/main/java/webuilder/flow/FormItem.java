@@ -6,7 +6,7 @@ package webuilder.flow;
  * @author lijian
  *
  */
-public interface FormItem {
+public interface FormItem extends Cloneable {
 	/** 字段名 */
 	String getName();
 
@@ -15,4 +15,17 @@ public interface FormItem {
 
 	/** 表单项的类型 */
 	String getType();
+
+	/** 此字段是否只读 */
+	boolean isReadonly();
+
+	FormItem clone() throws CloneNotSupportedException;
+
+	/**
+	 * 为当前的表单项创建一个带有只读属性的副本
+	 * 
+	 * @return
+	 * @throws CloneNotSupportedException
+	 */
+	FormItem createReadonlyItem() throws CloneNotSupportedException;
 }

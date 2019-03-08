@@ -40,7 +40,12 @@ public class PermissionedForm implements Form {
 			if (editableFields.contains(item.getName())) {
 				result.add(item);
 			} else if (readonlyFields.contains(item.getName())) {
-				result.add(new ReadonlyItem(item.getName(), item.getText()));
+				try {
+					FormItem newItem = item.createReadonlyItem();
+					result.add(newItem);
+				} catch (CloneNotSupportedException e) {
+					throw new RuntimeException(e);
+				}
 			}
 		}
 		return result;

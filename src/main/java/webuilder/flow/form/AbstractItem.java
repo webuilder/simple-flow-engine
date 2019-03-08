@@ -10,7 +10,9 @@ public abstract class AbstractItem implements FormItem {
 
 	private String text;
 
-	private boolean notNull;
+	private boolean notNull = false;
+
+	private boolean isReadonly = false;
 
 	public AbstractItem() {
 		super();
@@ -27,6 +29,17 @@ public abstract class AbstractItem implements FormItem {
 		super();
 		this.name = name;
 		this.text = text;
+	}
+
+	public FormItem clone() throws CloneNotSupportedException {
+		return (FormItem) super.clone();
+	}
+
+	@Override
+	public FormItem createReadonlyItem() throws CloneNotSupportedException {
+		AbstractItem cloned = (AbstractItem) this.clone();
+		cloned.setReadonly(true);
+		return cloned;
 	}
 
 }
