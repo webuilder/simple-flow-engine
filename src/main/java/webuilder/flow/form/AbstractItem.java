@@ -10,7 +10,7 @@ public abstract class AbstractItem implements FormItem {
 
 	private String text;
 
-	private boolean notNull = false;
+	private boolean required = false;
 
 	private boolean isReadonly = false;
 
