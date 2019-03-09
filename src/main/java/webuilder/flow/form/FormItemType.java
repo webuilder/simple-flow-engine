@@ -17,4 +17,6 @@ public abstract class FormItemType {
 	public static final String CHECKBOX = "checkbox";
 	public static final String DATE = "date";
 	public static final String DATETIME = "datetime";
+	public static final String CASCADER = "cascader";
+	public static final String RATE = "rate";
 }
