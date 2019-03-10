@@ -32,17 +32,17 @@ public abstract class HaveChildrenItem extends AbstractItem implements FormItem 
 		// TODO Auto-generated constructor stub
 	}
 
-	public void addItem(String value, String text) {
+	public void addItem(String value, String label) {
 		Option option = new Option();
 		option.setValue(value);
-		option.setText(text);
+		option.setLabel(label);
 		items.add(option);
 	}
 	
-	public void addItem(String value, String text, List<Object> children) {
+	public void addItem(String value, String label, List<Object> children) {
 		CascaderOption option = new CascaderOption();
 		option.setValue(value);
-		option.setText(text);
+		option.setLabel(label);
 		option.setChildren(children);
 		items.add(option);
 	}
@@ -66,13 +66,13 @@ public abstract class HaveChildrenItem extends AbstractItem implements FormItem 
 	@Data
 	public static class Option {
 		private String value;
-		private String text;
+		private String label;
 	}
 	
 	@Data
 	public static class CascaderOption {
 		private String value;
-		private String text;
+		private String label;
 		private List<Object> children;
 	}
 
