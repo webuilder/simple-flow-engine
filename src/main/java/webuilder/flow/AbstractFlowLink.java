@@ -9,7 +9,7 @@ public abstract class AbstractFlowLink implements FlowLink {
 
 	private List<LinkFunction> funcs = new ArrayList<>();
 
-	private Map<String, Object> attributes = new HashMap<>();
+	private Map<Object, Object> attributes = new HashMap<>();
 
 	@Override
 	public void run(FlowInstance flowInstance, FlowContext context) {
@@ -23,11 +23,11 @@ public abstract class AbstractFlowLink implements FlowLink {
 	}
 
 	@Override
-	public Object getAttribute(String attributeName) {
+	public Object getAttribute(Object attributeName) {
 		return attributes.get(attributeName);
 	}
 
-	public void setAttribute(String attributeName, Object value) {
+	public void setAttribute(Object attributeName, Object value) {
 		attributes.put(attributeName, value);
 	}
 

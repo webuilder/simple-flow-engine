@@ -1,11 +1,18 @@
 package webuilder.flow.impl;
 
+import lombok.Data;
+import lombok.EqualsAndHashCode;
 import webuilder.flow.AbstractFlowLink;
 import webuilder.flow.Condition;
 import webuilder.flow.FlowLink;
 import webuilder.flow.FlowNode;
+import webuilder.flow.UserFinder;
 
+@Data
+@EqualsAndHashCode(callSuper = false)
 public class DefaultFlowLink extends AbstractFlowLink implements FlowLink {
+
+	private static final UserFinder DEFAULT_OPERATOR_USER_FINDER = new SelfUserFinder();
 
 	private final String linkId;
 
@@ -16,6 +23,8 @@ public class DefaultFlowLink extends AbstractFlowLink implements FlowLink {
 	private String toNode;
 
 	private Condition condition;
+
+	private UserFinder operatorFinder = DEFAULT_OPERATOR_USER_FINDER;
 
 	public DefaultFlowLink(String linkId, String name) {
 		super();
@@ -37,46 +46,6 @@ public class DefaultFlowLink extends AbstractFlowLink implements FlowLink {
 		this.name = name;
 		this.fromNode = fromNode.getNodeId();
 		this.toNode = toNode.getNodeId();
-	}
-
-	@Override
-	public String getLinkId() {
-		// TODO Auto-generated method stub
-		return linkId;
-	}
-
-	@Override
-	public String getFromNode() {
-		// TODO Auto-generated method stub
-		return fromNode;
-	}
-
-	@Override
-	public String getToNode() {
-		// TODO Auto-generated method stub
-		return toNode;
-	}
-
-	@Override
-	public String getName() {
-		// TODO Auto-generated method stub
-		return name;
-	}
-
-	public void setFromNode(String fromNode) {
-		this.fromNode = fromNode;
-	}
-
-	public void setToNode(String toNode) {
-		this.toNode = toNode;
-	}
-
-	public Condition getCondition() {
-		return condition;
-	}
-
-	public void setCondition(Condition condition) {
-		this.condition = condition;
 	}
 
 }
