@@ -8,7 +8,7 @@ import webuilder.flow.FormItem;
 @Data
 @EqualsAndHashCode(callSuper = true)
 @ToString(callSuper = true)
-public class CheckboxItem extends HaveChildrenItem implements FormItem {
+public class CheckboxItem extends HaveOptionChildrenItem implements FormItem {
 
 	@Override
 	public String getType() {

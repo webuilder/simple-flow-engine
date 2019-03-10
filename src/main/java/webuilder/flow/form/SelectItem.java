@@ -1,8 +1,5 @@
 package webuilder.flow.form;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
@@ -11,7 +8,7 @@ import webuilder.flow.FormItem;
 @Data
 @EqualsAndHashCode(callSuper = true)
 @ToString(callSuper = true)
-public class SelectItem extends HaveChildrenItem implements FormItem {
+public class SelectItem extends HaveOptionChildrenItem implements FormItem {
 
 	@Override
 	public String getType() {
