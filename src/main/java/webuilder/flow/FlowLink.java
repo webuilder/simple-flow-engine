@@ -12,8 +12,9 @@ public interface FlowLink {
 
 	Condition getCondition();
 
-	Object getAttribute(String attributeName);
+	Object getAttribute(Object attributeName);
 
 	void run(FlowInstance flowInstance, FlowContext context);
 
+	UserFinder getOperatorFinder();
 }
