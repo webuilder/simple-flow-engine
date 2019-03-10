@@ -8,7 +8,7 @@ import webuilder.flow.FormItem;
 @Data
 @EqualsAndHashCode(callSuper = true)
 @ToString(callSuper = true)
-public class RadioItem extends HaveChildrenItem implements FormItem {
+public class RadioItem extends HaveOptionChildrenItem implements FormItem {
 
 	@Override
 	public String getType() {

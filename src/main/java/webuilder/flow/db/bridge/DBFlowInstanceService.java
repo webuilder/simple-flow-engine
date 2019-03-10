@@ -6,7 +6,7 @@ public interface DBFlowInstanceService {
 	/**
 	 * 读取一个流程实例
 	 * 
-	 * @param instanceId
+	 * @param instanceId 流程实例ID
 	 * @return
 	 */
 	DBFlowInstance get(Long instanceId);
@@ -21,14 +21,14 @@ public interface DBFlowInstanceService {
 	/**
 	 * 更新一个流程实例
 	 * 
-	 * @param instance
+	 * @param instance 流程实例
 	 */
 	void update(DBFlowInstance instance);
 
 	/**
 	 * 删除一个流程实例
 	 * 
-	 * @param instanceId
+	 * @param instanceId 即将删除的流程实例ID
 	 */
 	void delete(Long instanceId);
 }

@@ -8,7 +8,7 @@ import webuilder.flow.FormItem;
 @Data
 @EqualsAndHashCode(callSuper = true)
 @ToString(callSuper = true)
-public class RateItem extends HaveChildrenItem implements FormItem {@Override
+public class RateItem extends HaveOptionChildrenItem implements FormItem {@Override
 	public String getType() {
 		// TODO Auto-generated method stub
 		return FormItemType.RATE;
