@@ -18,7 +18,7 @@ import webuilder.flow.FormItem;
 @ToString(callSuper = true)
 public abstract class HaveChildrenItem extends AbstractItem implements FormItem {
 
-	protected List<Option> items = new ArrayList<>();
+	protected List<Object> items = new ArrayList<>();
 
 	protected ItemProvider provider;
 
@@ -32,14 +32,22 @@ public abstract class HaveChildrenItem extends AbstractItem implements FormItem 
 		// TODO Auto-generated constructor stub
 	}
 
-	public void addItem(String value, String text) {
+	public void addItem(String value, String label) {
 		Option option = new Option();
 		option.setValue(value);
-		option.setText(text);
+		option.setLabel(label);
+		items.add(option);
+	}
+	
+	public void addItem(String value, String label, List<Object> children) {
+		CascaderOption option = new CascaderOption();
+		option.setValue(value);
+		option.setLabel(label);
+		option.setChildren(children);
 		items.add(option);
 	}
 
-	public List<Option> getItems() {
+	public List<Object> getItems() {
 		if (provider != null) {
 			return provider.getItems();
 		} else {
@@ -47,7 +55,7 @@ public abstract class HaveChildrenItem extends AbstractItem implements FormItem 
 		}
 	}
 
-	public void setItems(List<Option> items) {
+	public void setItems(List<Object> items) {
 		this.items = items;
 	}
 
@@ -58,10 +66,17 @@ public abstract class HaveChildrenItem extends AbstractItem implements FormItem 
 	@Data
 	public static class Option {
 		private String value;
-		private String text;
+		private String label;
+	}
+	
+	@Data
+	public static class CascaderOption {
+		private String value;
+		private String label;
+		private List<Object> children;
 	}
 
 	public static interface ItemProvider {
-		List<Option> getItems();
+		List<Object> getItems();
 	}
 }
