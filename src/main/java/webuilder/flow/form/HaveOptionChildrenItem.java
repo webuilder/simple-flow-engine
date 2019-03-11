@@ -1,13 +1,11 @@
 package webuilder.flow.form;
 
-import webuilder.flow.form.HaveChildrenItem.Option;
-
 /**
  * 子元素类型为Option的表单项
  * @author lijian
  *
  */
-public abstract class HaveOptionChildrenItem extends HaveChildrenItem<Option> {
+public abstract class HaveOptionChildrenItem extends HaveChildrenItem<Object> {
 
 	public HaveOptionChildrenItem() {
 		super();
@@ -19,8 +17,8 @@ public abstract class HaveOptionChildrenItem extends HaveChildrenItem<Option> {
 		// TODO Auto-generated constructor stub
 	}
 
-	public void addItem(String value, String label) {
-		Option option = new Option();
+	public <T> void addItem(T value, String label) {
+		Option<T> option = new Option<T>();
 		option.setValue(value);
 		option.setLabel(label);
 		items.add(option);

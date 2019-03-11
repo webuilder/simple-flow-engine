@@ -49,8 +49,8 @@ public abstract class HaveChildrenItem<T> extends AbstractItem implements FormIt
 	}
 
 	@Data
-	public static class Option {
-		private String value;
+	public static class Option<T> {
+		private T value;
 		private String label;
 	}
 

@@ -26,8 +26,8 @@ public class CascaderItem extends HaveChildrenItem<Object> implements FormItem {
 		super(name, text);
 	}
 
-	public void addItem(String value, String label, List<Object> children) {
-		CascaderOption option = new CascaderOption();
+	public <T> void addItem(T value, String label, List<Object> children) {
+		CascaderOption<T> option = new CascaderOption<T>();
 		option.setValue(value);
 		option.setLabel(label);
 		option.setChildren(children);
@@ -35,8 +35,8 @@ public class CascaderItem extends HaveChildrenItem<Object> implements FormItem {
 	}
 	
 	@Data
-	public static class CascaderOption {
-		private String value;
+	public static class CascaderOption<T> {
+		private T value;
 		private String label;
 		private List<Object> children;
 	}
