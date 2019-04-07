@@ -15,7 +15,9 @@ import webuilder.flow.FlowInstance;
 import webuilder.flow.FlowLink;
 import webuilder.flow.FlowNode;
 import webuilder.flow.FlowRuntimeException;
+import webuilder.flow.FlowUser;
 import webuilder.flow.NodeListener;
+import webuilder.flow.UserFinder;
 import webuilder.flow.utils.FlowUtils;
 
 @Slf4j
@@ -131,7 +133,18 @@ public abstract class AbstractFlowEngine implements FlowEngine {
 		FlowDefinition flow = flows.get(flowName);
 		String nodeId = instance.getCurrentNode();
 		List<FlowLink> links = flow.getLinks();
-		List<FlowLink> nodeLinks = links.stream().filter((t) -> t.getFromNode().equals(nodeId))
+		List<FlowLink> nodeLinks = links.stream().filter((t) -> {
+				UserFinder userFinder = t.getOperatorFinder();t.getOperatorFinder();
+				List<FlowUser> flowUsers = userFinder.find(instance, t.getLinkId(), context);
+				boolean valid = false;
+				for (FlowUser user : flowUsers) {
+					if (context.getUser().equals(user)) {
+						valid = true;
+						break;
+					}
+				}
+				return t.getFromNode().equals(nodeId) && valid;
+			})
 				.collect(Collectors.toList());
 		return getInternalValidLinks(nodeLinks, instance, context);
 	}
