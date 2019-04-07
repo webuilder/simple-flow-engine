@@ -134,16 +134,18 @@ public abstract class AbstractFlowEngine implements FlowEngine {
 		String nodeId = instance.getCurrentNode();
 		List<FlowLink> links = flow.getLinks();
 		List<FlowLink> nodeLinks = links.stream().filter((t) -> {
-				UserFinder userFinder = t.getOperatorFinder();t.getOperatorFinder();
+				UserFinder userFinder = t.getOperatorFinder();
 				List<FlowUser> flowUsers = userFinder.find(instance, t.getLinkId(), context);
+				FlowUser currentUser = context.getUser();
 				boolean valid = false;
 				for (FlowUser user : flowUsers) {
-					if (context.getUser().equals(user)) {
+					if (user.getUserId().equals(currentUser.getUserId())) {
 						valid = true;
 						break;
 					}
 				}
-				return t.getFromNode().equals(nodeId) && valid;
+	
+				return valid && t.getFromNode().equals(nodeId);
 			})
 				.collect(Collectors.toList());
 		return getInternalValidLinks(nodeLinks, instance, context);
