@@ -3,6 +3,8 @@ package webuilder.flow;
 import static org.junit.Assert.assertEquals;
 
 import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -27,12 +29,13 @@ public class SimpleFlowBuilderTest {
 				DefaultFlowDefinition def = new DefaultFlowDefinition(FLOW_NAME);
 
 				StartNode start = new StartNode();
-				start.addFunction(new NodeFunction(){
+				start.addFunction(new NodeFunction() {
 
 					@Override
 					public void run(FlowInstance flowInstance, FlowContext context) {
 						System.out.println("Exec Start Node");
-					}});
+					}
+				});
 				def.addNode(start);
 
 				TaskNode apply = new TaskNode("a01", "申请休假", false);
@@ -63,6 +66,14 @@ public class SimpleFlowBuilderTest {
 				def.addLink(b01);
 
 				DefaultFlowLink b02 = new DefaultFlowLink("b02", "提交经理审批", apply, audit1);
+				b02.setOperatorFinder(new UserFinder() {
+
+					@Override
+					public List<FlowUser> find(FlowInstance instance, String linkId, FlowContext context) {
+						// TODO Auto-generated method stub
+						return Collections.emptyList();
+					}
+				});
 				def.addLink(b02);
 
 				FlowLink b03 = new DefaultFlowLink("b03", "提交总经理审批", audit1, audit2);
@@ -104,6 +115,9 @@ public class SimpleFlowBuilderTest {
 
 		System.out.println("[" + instance.getFlowName() + "] 当前节点 -> " + instance.getCurrentNode());
 
+		List<FlowLink> validLinks = engine.getValidLinks(instance, context);
+		assertEquals(1, validLinks.size());
+
 		engine.run(instance, context, "b02");
 		System.out.println("[" + instance.getFlowName() + "] 当前节点 -> " + instance.getCurrentNode());
 
@@ -114,6 +128,39 @@ public class SimpleFlowBuilderTest {
 		context.getVariables().put("option2", "同意");
 		engine.run(instance, context, "b04");
 		System.out.println("[" + instance.getFlowName() + "] 当前节点 -> " + instance.getCurrentNode());
+
+	}
+
+	@Test
+	public void test2() {
+		FlowDefinition def = builder.build();
+		MemFlowEngine engine = new MemFlowEngine(Arrays.asList(def));
+		FlowEngineConfiguration config = new FlowEngineConfiguration();
+		config.setIgnoreNoUserLinks(true);
+		engine.setConfig(config);
+
+		DefaultFlowContext context = new DefaultFlowContext();
+		FlowUser user = new FlowUser() {
+
+			@Override
+			public String getUserId() {
+				// TODO Auto-generated method stub
+				return "Junit-User";
+			}
+
+			@Override
+			public String getName() {
+				// TODO Auto-generated method stub
+				return "测试用户";
+			}
+		};
+		context.setUser(user);
+		FlowInstance instance = engine.startFlow(FLOW_NAME, context);
+
+		System.out.println("[" + instance.getFlowName() + "] 当前节点 -> " + instance.getCurrentNode());
+
+		List<FlowLink> validLinks = engine.getValidLinks(instance, context);
+		assertEquals(0, validLinks.size()); // b02 无可用的用户，因此不显示
 
 	}
 }

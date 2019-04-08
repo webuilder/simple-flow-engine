@@ -6,21 +6,30 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
+import lombok.Getter;
+import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
 import webuilder.flow.EndNode;
 import webuilder.flow.FlowContext;
 import webuilder.flow.FlowDefinition;
 import webuilder.flow.FlowEngine;
+import webuilder.flow.FlowEngineConfiguration;
 import webuilder.flow.FlowInstance;
 import webuilder.flow.FlowLink;
 import webuilder.flow.FlowNode;
 import webuilder.flow.FlowRuntimeException;
+import webuilder.flow.FlowUser;
 import webuilder.flow.NodeListener;
+import webuilder.flow.UserFinder;
 import webuilder.flow.utils.FlowUtils;
 
 @Slf4j
 public abstract class AbstractFlowEngine implements FlowEngine {
 	protected Map<String, FlowDefinition> flows;
+
+	@Getter
+	@Setter
+	protected FlowEngineConfiguration config = new FlowEngineConfiguration();
 
 	public AbstractFlowEngine(Collection<FlowDefinition> flows) {
 		super();
@@ -133,7 +142,16 @@ public abstract class AbstractFlowEngine implements FlowEngine {
 		List<FlowLink> links = flow.getLinks();
 		List<FlowLink> nodeLinks = links.stream().filter((t) -> t.getFromNode().equals(nodeId))
 				.collect(Collectors.toList());
-		return getInternalValidLinks(nodeLinks, instance, context);
+		List<FlowLink> validLinks = getInternalValidLinks(nodeLinks, instance, context);
+
+		if (config.isIgnoreNoUserLinks()) {
+			validLinks = validLinks.stream().filter(t -> {
+				UserFinder userFinder = t.getOperatorFinder();
+				List<FlowUser> flowUsers = userFinder.find(instance, t.getLinkId(), context);
+				return !flowUsers.isEmpty();
+			}).collect(Collectors.toList());
+		}
+		return validLinks;
 	}
 
 	private List<FlowLink> getInternalValidLinks(List<FlowLink> links, FlowInstance instance, FlowContext context) {
