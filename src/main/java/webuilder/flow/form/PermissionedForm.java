@@ -28,6 +28,16 @@ public class PermissionedForm implements Form {
 	 */
 	private List<String> editableFields = Collections.emptyList();
 
+	/**
+	 * 允许编辑所有未设置的字段
+	 */
+	private boolean editableUnknownFields = false;
+
+	/**
+	 * 允许查看所有未设置的字段
+	 */
+	private boolean readonlyUnknownFields = false;
+
 	public PermissionedForm(Form form) {
 		super();
 		this.form = form;
@@ -37,9 +47,9 @@ public class PermissionedForm implements Form {
 	public List<FormItem> getItems() {
 		List<FormItem> result = new ArrayList<>();
 		for (FormItem item : form.getItems()) {
-			if (editableFields.contains(item.getName())) {
+			if (editableFields.contains(item.getName()) || editableUnknownFields) {
 				result.add(item);
-			} else if (readonlyFields.contains(item.getName())) {
+			} else if (readonlyFields.contains(item.getName()) || readonlyUnknownFields) {
 				try {
 					FormItem newItem = item.createReadonlyItem();
 					result.add(newItem);
@@ -68,4 +78,13 @@ public class PermissionedForm implements Form {
 	public void editable(String... editableFields) {
 		this.editableFields = Arrays.asList(editableFields);
 	}
+
+	public void setEditableUnknownFields(boolean editableUnknownFields) {
+		this.editableUnknownFields = editableUnknownFields;
+	}
+
+	public void setReadonlyUnknownFields(boolean readonlyUnknownFields) {
+		this.readonlyUnknownFields = readonlyUnknownFields;
+	}
+	
 }

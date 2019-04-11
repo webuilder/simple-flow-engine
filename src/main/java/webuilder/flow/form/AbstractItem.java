@@ -14,16 +14,16 @@ public abstract class AbstractItem implements FormItem {
 
 	private boolean isReadonly = false;
 
+	private Object flag = "";
+
 	public AbstractItem() {
 		super();
 	}
 
 	/**
 	 * 
-	 * @param name
-	 *            字段名
-	 * @param text
-	 *            字段中文描述
+	 * @param name 字段名
+	 * @param text 字段中文描述
 	 */
 	public AbstractItem(String name, String text) {
 		super();

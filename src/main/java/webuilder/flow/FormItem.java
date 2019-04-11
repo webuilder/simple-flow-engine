@@ -15,6 +15,9 @@ public interface FormItem extends Cloneable {
 
 	/** 表单项的类型 */
 	String getType();
+	
+	/** 自定义的标志位，可以为null */
+	Object getFlag();
 
 	/** 此字段是否只读 */
 	boolean isReadonly();
