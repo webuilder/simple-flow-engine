@@ -16,27 +16,27 @@ import webuilder.flow.FormItem;
  */
 public class PermissionedForm implements Form {
 
-	private Form form;
+	protected Form form;
 
 	/**
 	 * 只读字段
 	 */
-	private List<String> readonlyFields = Collections.emptyList();
+	protected List<String> readonlyFields = Collections.emptyList();
 
 	/**
 	 * 可编辑字段
 	 */
-	private List<String> editableFields = Collections.emptyList();
+	protected List<String> editableFields = Collections.emptyList();
 
 	/**
 	 * 允许编辑所有未设置的字段
 	 */
-	private boolean editableUnknownFields = false;
+	protected boolean editableUnknownFields = false;
 
 	/**
 	 * 允许查看所有未设置的字段
 	 */
-	private boolean readonlyUnknownFields = false;
+	protected boolean readonlyUnknownFields = false;
 
 	public PermissionedForm(Form form) {
 		super();
