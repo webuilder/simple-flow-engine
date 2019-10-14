@@ -64,7 +64,7 @@ public class PermissionedForm implements Form {
 	/**
 	 * 设置只读的字段
 	 * 
-	 * @param readonlyFields
+	 * @param readonlyFields 只读的字段名称列表
 	 */
 	public void readonly(String... readonlyFields) {
 		this.readonlyFields = Arrays.asList(readonlyFields);
@@ -73,7 +73,7 @@ public class PermissionedForm implements Form {
 	/**
 	 * 设置可编辑的字段
 	 * 
-	 * @param editableFields
+	 * @param editableFields 可编辑的字段名称列表
 	 */
 	public void editable(String... editableFields) {
 		this.editableFields = Arrays.asList(editableFields);
